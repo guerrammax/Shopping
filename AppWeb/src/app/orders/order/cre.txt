@@ -1,0 +1,11 @@
+
+//cajero
+usuario: max
+contraseña: 0
+pin: 1234
+
+
+//mesero
+usuario: maxmesero
+contraseña: 1
+pin: 1122

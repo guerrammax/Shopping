@@ -1,0 +1,71 @@
+<form #form="ngForm" autocomplete="off">
+  <div class="row">
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <label>Order No.</label>
+        <input name="OrderNo" #OrderNo="ngModel" [(ngModel)]="service.FormData.OrderNo" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Customer</label>
+        <select name="Customer" #CustomerID="ngModel" [(ngModel)]="service.FormData.CustomerID" class="form-control">
+          <option value="0">Select </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Payment Method</label>
+        <select name="PMethod" #PMethod="ngModel" [(ngModel)]="service.FormData.PMethod" class="form-control">
+          <option value="">-Select-</option>
+          <option value="Cash">Cash</option>
+          <option value="Card">Credit Card</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Grand Total</label>
+        <input name="GTotal" #Gtotal="ngModel" [(ngModel)]="service.FormData.GTotal" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <!-- order items table -->
+  <table class="table table-borderless">
+    <thead class="thead-light">
+      <th>Food</th>
+      <th>Precie</th>
+      <th>Quality</th>
+      <th>Total</th>
+      <th>
+        <button class="btn btn-sm btn-success text-white" (click)="AddorEditOrderItem(null,service.FormData.OrderID)">Add Item</button>
+        <!-- <a href="" class="btn btn-sm btn-success text-white" (click)="AddorEditOrderItem(null,service.FormData.OrderID)">Add Item</a> -->
+      </th>
+    </thead>
+    <tbody>
+
+      <tr *ngIf="service.orderItems.length==0">
+        <td class="font-italic text-center" colspan="5">
+          No food item selected this order
+        </td>
+      </tr>
+
+      <tr *ngFor="let item of service.orderItems; let i=index">
+        <th>{{item.ItemName}}</th>
+        <th>{{item.Price}}</th>
+        <th>{{item.Quantity}}</th>
+        <th>{{item.Total}}</th>
+        <td>
+            <button class="btn btn-sm btn-success text-white" (click)="AddorEditOrderItem(null,service.FormData.OrderID)">Add Item</button>
+            <!-- <a href="" class="btn btn-sm btn-info text-white" (click)="AddorEditOrderItem(i,service.FormData.OrderID)" ><i class="fa fa-pencil"></i></a> -->
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark">Submit</button>
+  </div>
+</form>
